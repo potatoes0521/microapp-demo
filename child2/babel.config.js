@@ -1,5 +1,5 @@
 /*
- * @LastEditors: 
+ * @LastEditors:
  * @Description: babel配置文件
  *   @babel/plugin-proposal-nullish-coalescing-operator 解决null问题
  *   @babel/plugin-proposal-optional-chaining 解决可选项?
@@ -7,7 +7,7 @@
  *   transform-remove-console 删除console，生产环境使用
  * @Date: 2021-09-28 14:51:48
  * @LastEditTime: 2021-09-29 17:44:26
- * @Author: 
+ * @Author:
  */
 
 const plugins = [

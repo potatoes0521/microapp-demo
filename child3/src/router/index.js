@@ -1,9 +1,9 @@
 /*
- * @LastEditors: 
+ * @LastEditors:
  * @Description: 路由文件
  * @Date: 2021-09-28 14:51:48
  * @LastEditTime: 2022-04-07 15:16:05
- * @Author: 
+ * @Author:
  */
 import { createRouter, createWebHistory } from "vue-router";
 import { StaticRouterMap } from "./modules/static";
