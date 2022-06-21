@@ -16,7 +16,7 @@ export const StaticRouterMap = [
     path: "/child2-1",
     name: "Page1",
     meta: {
-      hideInMenu: true,
+      keepAlive: true,
     },
     component: () => import("@/views/Page1.vue"),
   },
@@ -24,7 +24,7 @@ export const StaticRouterMap = [
     path: "/child2-1-1",
     name: "Page1-1",
     meta: {
-      hideInMenu: true,
+      keepAlive: true,
     },
     component: () => import("@/views/Page1-1.vue"),
   },
@@ -32,7 +32,7 @@ export const StaticRouterMap = [
     path: "/child2-2",
     name: "Page2",
     meta: {
-      hideInMenu: true,
+      keepAlive: true,
     },
     component: () => import("@/views/Page2.vue"),
   },
@@ -40,7 +40,7 @@ export const StaticRouterMap = [
     path: "/child2-2-1",
     name: "Page2-1",
     meta: {
-      hideInMenu: true,
+      keepAlive: true,
     },
     component: () => import("@/views/Page2-1.vue"),
   },
