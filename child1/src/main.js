@@ -2,7 +2,7 @@
  * @LastEditors: liu yang
  * @Description: 入口文件
  * @Date: 2021-09-28 14:51:48
- * @LastEditTime: 2022-06-21 13:57:53
+ * @LastEditTime: 2022-06-21 13:59:45
  * @Author:
  */
 console.log("🚀 > file: main.js > line 14 > config", config)
@@ -80,6 +80,8 @@ function handleMicroData(router) {
         // console.log('即将重新渲染')
       } else if (e.detail.appState === "aftershow") {
         console.log("WO 已经重新渲染", router.currentRoute.value);
+        // 这里这么处理 是因为有个 bug 在微应用中如
+        // 打开A 系统  a 页面  打开B 系统  b 页面  然后菜单上直接点击进入A 系统  c 页面  这个时候不会触发路由变化 
         const pathArr = window.location.pathname.match(/\/qishi-.+/);
         // eslint-disable-next-line no-case-declarations
         const curRouterPath = (
