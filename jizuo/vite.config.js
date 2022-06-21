@@ -1,16 +1,14 @@
 /*
- * @LastEditors: 
+ * @LastEditors: liu yang
  * @Description: vite项目配置文件
  * @Date: 2022-03-02 16:00:21
- * @LastEditTime: 2022-06-16 16:39:04
- * @Author: 
+ * @LastEditTime: 2022-06-21 11:10:41
+ * @Author:
  */
 import { defineConfig, loadEnv } from 'vite';
 
 import { resolve } from 'path';
-
-import presets from './presets/presets';
-
+import vue from '@vitejs/plugin-vue';
 // https://cn.vitejs.dev/config/
 export default defineConfig((env) => {
   // env 环境变量
@@ -36,8 +34,8 @@ export default defineConfig((env) => {
         }
       }
     },
+    plugins: [vue()],
     // 插件
-    plugins: [...presets(env, viteEnv)],
     envDir: './env',
     build: {
       outDir: 'dist',
