@@ -2,7 +2,7 @@
  * @LastEditors: liu yang
  * @Description: 静态路由-无需登录
  * @Date: 2021-09-28 14:51:48
- * @LastEditTime: 2022-06-21 15:05:17
+ * @LastEditTime: 2022-06-21 15:11:16
  * @Author:
  */
 
@@ -13,7 +13,7 @@ export const StaticRouterMap = [
   },
   {
     path: "/child1-1",
-    name: "Page1",
+    name: "Child1Page1",
     meta: {
       keepAlive: true,
     },
@@ -21,7 +21,7 @@ export const StaticRouterMap = [
   },
   {
     path: "/child1-1-1",
-    name: "Page1-1",
+    name: "Child1Page1-1",
     meta: {
       keepAlive: true,
     },
@@ -29,7 +29,7 @@ export const StaticRouterMap = [
   },
   {
     path: "/child1-2",
-    name: "Page2",
+    name: "Child1Page2",
     meta: {
       keepAlive: true,
     },
@@ -37,7 +37,7 @@ export const StaticRouterMap = [
   },
   {
     path: "/child1-2-1",
-    name: "Page2-1",
+    name: "Child1Page2-1",
     meta: {
       keepAlive: true,
     },

@@ -4,5 +4,10 @@
     <button @click="$router.push('/child1-2-1')">跳转到 2-1</button>
   </div>
 </template>
+<script>
+export default {
+  name: "Child1Page2",
+};
+</script>
 <script setup></script>
 <style scoped lang="scss"></style>

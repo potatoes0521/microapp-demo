@@ -4,5 +4,10 @@
     <button @click="$router.go(-1)">返回到page1</button>
   </div>
 </template>
+<script>
+export default {
+  name: "Child2Page1-1",
+};
+</script>
 <script setup></script>
 <style scoped lang="scss"></style>
