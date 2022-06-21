@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full" v-loading="loading">
+  <div class="h-full">
     <micro-app
       name="qishi-cas"
       :url="cas"
@@ -23,12 +23,13 @@
   import useMicro, { unifiedEventhandle } from '@/hooks/useMicro';
   import { getConfig } from '@/config';
   import { log } from '@/utils/log';
+  import { ref } from 'vue';
 
   const cas = getConfig('cas');
 
   const { microAppData } = useMicro();
   console.log('microAppData', microAppData);
-  const loading = ref(false)
+  const loading = ref(false);
 
   const handleCreate = () => {
     log('基座：CAS 创建了');

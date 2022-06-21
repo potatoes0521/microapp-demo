@@ -1,110 +1,35 @@
 /*
- * @LastEditors: 
+ * @LastEditors: liu yang
  * @Description: 入口文件
  * @Date: 2021-09-28 14:51:48
- * @LastEditTime: 2022-06-21 10:04:48
- * @Author: 
+ * @LastEditTime: 2022-06-21 13:57:53
+ * @Author:
  */
+console.log("🚀 > file: main.js > line 14 > config", config)
+
 import "./public-path";
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import config from "@/config";
+console.log("🚀 > file: main.js > line 14 > config", config)
 
 // 创建Vue根实例
 const app = createApp(App);
 
-log(`WO 是否作为微应用调用`, window.__MICRO_APP_ENVIRONMENT__ ? "是" : "否");
-
-// mock数据
-if (process.env.VUE_APP_MODE === "dev") {
-  const { mockXHR } = require("../mock");
-  mockXHR();
-}
-
-// 引入elementplus
-// import "@/assets/css/el_var.scss";
-import ElementPlus from "element-plus";
-import zhCn from "element-plus/es/locale/lang/zh-cn";
-import "element-plus/dist/index.css";
-
-// 引入svg图标
-import "@/icons/index";
-
-// 引入公共css
-import "@/assets/css/index.scss";
-
-// 生成唯一标识
-import { createUniqueCode } from "@/utils/uniqueCode";
-createUniqueCode();
+log(
+  `${config.appCode} 是否作为微应用调用`,
+  window.__MICRO_APP_ENVIRONMENT__ ? "是" : "否"
+);
 
 // 动态路由加载
 import "@/router/permission.js";
 
-// 本地存储 Cookie SessionStorage localStorage
-import storage from "@/utils/storage.js";
-
-// 自定义指令注册 权限校验方法混入 按钮权限v-auth
-import auth from "@/utils/auth";
-// 各种自定义指令注册
-import customDirective from "@/utils/directive";
-
-// 引入 XiaoshiComponents
-import {
-  XIcon,
-  XPanelContainer,
-  XPanelTitle,
-  XSearchForm,
-  XSearchFormItem,
-} from "@xiaoshi/xiaoshi-components";
-import "@xiaoshi/xiaoshi-components/theme-chalk/index.css";
-// 全局注册组件
-
-// 以下为bpmn工作流绘图工具的样式
-import "bpmn-js/dist/assets/diagram-js.css"; // 左边工具栏以及编辑节点的样式
-import "bpmn-js/dist/assets/bpmn-font/css/bpmn.css";
-import "bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css";
-import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
-// 属性面板
-import "bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css";
-// 元素颜色
-import "bpmn-js-color-picker/colors/color-picker.css";
-// 鹰眼图
-import "diagram-js-minimap/assets/diagram-js-minimap.css";
-
-import "highlight.js/styles/stackoverflow-light.css";
-import hljs from "highlight.js/lib/core";
-import javascript from "highlight.js/lib/languages/javascript";
-import hljsVuePlugin from "@highlightjs/vue-plugin";
-
-hljs.registerLanguage("javascript", javascript);
-
-console.log(
-  "%cXIAOSHI FE Welcome WO",
-  "text-shadow: 0 1px 0 #WOc,0 1px 0 #c9c9c9,0 1px 0 #bbb,0 2px 0 #b9b9b9,0 3px 0 #aaa,0 4px 0.5px rgba(0,0,0,.1),0 0 3px rgba(0,0,0,.1),0 0.5px 2px rgba(0,0,0,.3),0 2px 3px rgba(0,0,0,.2),0 3px 7px rgba(0,0,0,.25),0 7px 7px rgba(0,0,0,.2),0 15px 15px rgba(0,0,0,.15);font-size:3em"
-);
-
-// 本地存储 Cookie SessionStorage localStorage
-app.config.globalProperties.$storage = storage;
 // 不报警告
 app.config.unwrapInjectedRef = true;
 
-auth(app);
-customDirective(app);
-
-app
-  .use(hljsVuePlugin)
-  .use(store)
-  .use(router)
-  .use(ElementPlus, { locale: zhCn })
-  .use(XIcon)
-  .use(XPanelContainer)
-  .use(XPanelTitle)
-  .use(XSearchForm)
-  .use(XSearchFormItem)
-  .use(auth)
-  .mount("#app");
+app.use(store).use(router).mount("#app");
 
 // 与基座进行数据交互
 function handleMicroData(router) {
@@ -115,8 +40,6 @@ function handleMicroData(router) {
     console.log("wo getData", microAppData);
     window.parentRouter = microAppData.router;
     window.parentGetSys = microAppData.getSys;
-    storage.setCookie("acToken", microAppData.wwwToken);
-    store.dispatch("commitChangeUserInfo");
 
     // 监听基座下发的数据变化
     window.microApp.addDataListener(({ event, data }) => {
@@ -175,7 +98,7 @@ function handleMicroData(router) {
           }
           return;
         }
-        // FIX: 2022年6月1日 
+        // FIX: 2022年6月1日
         // 修复bug
         // 其他子系统进入已经打开过得某个子系统的页面，就会丢失连接上的参数
         // eg: 主站打开CC  Apage  然后打开 WO  Bpage 然后回CC 某page  如果当前来个强提醒进入WO 工单详情 这里会丢失连接上参数
@@ -202,7 +125,10 @@ function fixBugForVueRouter4(router) {
         `/qishi-${config.appCode}${v.fullPath}` === window.history.state.current
       );
     });
-    console.log("🚀 > file: main.js > line 206 > fixBugForVueRouter4 > window.history", window.history)
+    console.log(
+      "🚀 > file: main.js > line 206 > fixBugForVueRouter4 > window.history",
+      window.history
+    );
     go(...arg);
     if (arg[0] < 0 && config.isChildSystem && window.microApp) {
       console.log(
@@ -234,8 +160,10 @@ function fixBugForVueRouter4(router) {
 
   router.beforeEach(() => {
     if (typeof window.history.state?.current === "string") {
-
-      console.log(`🚀 > file: main.js > line 244 > router.beforeEach > ${config.appCode}${window.history.state.current}`, window.history);
+      console.log(
+        `🚀 > file: main.js > line 244 > router.beforeEach > ${config.appCode}${window.history.state.current}`,
+        window.history
+      );
       window.history.state.current = window.history.state.current.replace(
         new RegExp(realBaseRoute, "g"),
         ""

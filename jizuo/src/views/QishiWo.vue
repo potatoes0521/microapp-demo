@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="loading" class="h-full">
+  <div class="h-full">
     <micro-app
       name="qishi-wo"
       :url="wo"
@@ -23,6 +23,7 @@
   import useMicro, { unifiedEventhandle } from '@/hooks/useMicro';
   import { getConfig } from '@/config';
   import { log } from '@/utils/log';
+  import { ref } from 'vue';
 
   const wo = getConfig('wo');
 
@@ -38,6 +39,7 @@
     log('基座：WO 即将被渲染');
   };
   const handleMount = () => {
+    console.log('🚀 > file: QishiWo.vue > line 43 > handleMount > 基座：WO 已经渲染完成');
     log('基座：WO 已经渲染完成');
     loading.value = false;
   };

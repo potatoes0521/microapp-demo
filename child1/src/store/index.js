@@ -1,9 +1,9 @@
 /*
- * @LastEditors: 
+ * @LastEditors:
  * @Description: vuex
  * @Date: 2021-09-28 14:51:48
  * @LastEditTime: 2021-09-28 15:53:35
- * @Author: 
+ * @Author:
  */
 import { createStore } from "vuex";
 import getters from "./getters";

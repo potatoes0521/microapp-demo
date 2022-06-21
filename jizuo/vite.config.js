@@ -2,7 +2,7 @@
  * @LastEditors: liu yang
  * @Description: vite项目配置文件
  * @Date: 2022-03-02 16:00:21
- * @LastEditTime: 2022-06-21 11:10:41
+ * @LastEditTime: 2022-06-21 13:39:33
  * @Author:
  */
 import { defineConfig, loadEnv } from 'vite';
@@ -73,7 +73,6 @@ export default defineConfig((env) => {
           // `,
           // javascriptEnabled: true
           additionalData: `
-            @import "@/styles/variables.scss";
           `
         }
       }

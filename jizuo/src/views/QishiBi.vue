@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="loading" class="h-full">
+  <div class="h-full">
     <micro-app
       name="qishi-bi"
       :url="bi"
@@ -23,6 +23,7 @@
   import useMicro, { unifiedEventhandle } from '@/hooks/useMicro';
   import { getConfig } from '@/config';
   import { log } from '@/utils/log';
+  import { ref } from 'vue';
 
   const bi = getConfig('bi');
 

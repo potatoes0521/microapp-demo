@@ -1,12 +1,14 @@
 /*
- * @LastEditors: 
+ * @LastEditors: liu yang
  * @Description: 导航菜单tabs
  * @Date: 2022-03-22 18:40:57
- * @LastEditTime: 2022-06-20 10:26:42
- * @Author: 
+ * @LastEditTime: 2022-06-21 13:46:11
+ * @Author:
  */
 // import { emitter } from '@/utils/mitt';
 import microApp, { unmountApp } from '@micro-zoe/micro-app';
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
 
 export const useCachesTabsStore = defineStore(
   'cachesTabsStore',

@@ -1,11 +1,10 @@
 /*
- * @LastEditors: 
+ * @LastEditors: liu yang
  * @Description: ...
  * @Date: 2022-01-26 18:11:38
- * @LastEditTime: 2022-05-23 11:21:23
- * @Author: 
+ * @LastEditTime: 2022-06-21 13:43:20
+ * @Author:
  */
-import { getSession } from '@/utils/storage.js';
 import { useRoute } from 'vue-router';
 
 export default function useAuth() {

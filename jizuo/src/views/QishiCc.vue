@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="loading" class="h-full">
+  <div class="h-full">
     <micro-app
       name="qishi-cc"
       :url="cc"
@@ -24,6 +24,7 @@
   import { getConfig } from '@/config';
   import { log } from '@/utils/log';
   import { useNotify } from '@/layout/hooks/useNotify';
+  import { ref } from 'vue';
 
   const cc = getConfig('cc');
 

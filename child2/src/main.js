@@ -1,8 +1,8 @@
 /*
- * @LastEditors: 
+ * @LastEditors: liu yang
  * @Description: 入口文件
  * @Date: 2021-09-28 14:51:48
- * @LastEditTime: 2022-06-21 10:04:48
+ * @LastEditTime: 2022-06-21 13:43:07
  * @Author: 
  */
 import "./public-path";
@@ -43,10 +43,8 @@ createUniqueCode();
 import "@/router/permission.js";
 
 // 本地存储 Cookie SessionStorage localStorage
-import storage from "@/utils/storage.js";
 
 // 自定义指令注册 权限校验方法混入 按钮权限v-auth
-import auth from "@/utils/auth";
 // 各种自定义指令注册
 import customDirective from "@/utils/directive";
 

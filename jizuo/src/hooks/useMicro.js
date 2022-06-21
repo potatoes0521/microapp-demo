@@ -1,18 +1,16 @@
 /*
- * @LastEditors: 
+ * @LastEditors: liu yang
  * @Description: ...
  * @Date: 2022-04-06 18:28:04
- * @LastEditTime: 2022-06-02 14:18:48
- * @Author: 
+ * @LastEditTime: 2022-06-21 13:47:39
+ * @Author:
  */
 import microApp, { getActiveApps, unmountAllApps } from '@micro-zoe/micro-app';
 import { useTabs } from '@/layout/hooks/useTabs';
-import { useUserStore } from '@/store/user';
-import { useSystemStore } from '@/store/system';
-import { getCookie } from '@/utils/storage';
 import router from '@/router/index';
 import { isObject } from '@/utils/index';
 import { logYellow } from '@/utils/log';
+import { ref } from 'vue';
 
 // parmas参数拼接
 export function parseParams(uri, params) {
@@ -63,8 +61,6 @@ export function routerPush(indexPath, params) {
 
 // 子系统派发事件统一处理函数
 export function unifiedEventhandle(event, data) {
-  const userStore = useUserStore();
-  const systemStore = useSystemStore();
   const { addTabs, removeTabs } = useTabs();
   switch (event) {
     case 'subsystemLogout':
@@ -73,7 +69,7 @@ export function unifiedEventhandle(event, data) {
         .then(() => {
           console.log('卸载所有子应用成功');
           if (data.ssCode !== 'www') {
-            userStore.logout(data);
+            // userStore.logout(data);
           }
         })
         .catch(() => {
@@ -97,10 +93,8 @@ export function unifiedEventhandle(event, data) {
 }
 
 export default function useMicro() {
-  const token = getCookie('acToken', true);
-
   const microAppData = ref({
-    wwwToken: token,
+    wwwToken: '123',
     msg: `来自基座给的Token！！！${+new Date()}`,
     router,
     getSys: () => getActiveApps(true)

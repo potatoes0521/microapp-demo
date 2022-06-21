@@ -1,9 +1,9 @@
 /*
- * @LastEditors: 
+ * @LastEditors:
  * @Description: menu tabs 缓存组件
  * @Date: 2022-03-29 15:39:07
  * @LastEditTime: 2022-06-13 13:47:19
- * @Author: 
+ * @Author:
  */
 import config from "@/config";
 
