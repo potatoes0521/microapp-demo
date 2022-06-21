@@ -2,7 +2,7 @@
  * @LastEditors: liu yang
  * @Description: 处理递归权限路由
  * @Date: 2021-09-28 14:51:48
- * @LastEditTime: 2022-06-21 11:19:29
+ * @LastEditTime: 2022-06-21 14:18:44
  * @Author:
  */
 import router from "./index.js";
@@ -10,7 +10,7 @@ import store from "@/store";
 
 router.beforeEach(async (to, from, next) => {
   console.log(
-    "%c [ child1 登录成功 ] >",
+    "%c [ child3 登录成功 ] >",
     "font-size:13px; background:#006400; color:#FFF;",
     to,
     from

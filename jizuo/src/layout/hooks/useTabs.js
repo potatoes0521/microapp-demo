@@ -2,15 +2,14 @@
  * @LastEditors: liu yang
  * @Description: tabs 方法
  * @Date: 2022-03-22 18:22:12
- * @LastEditTime: 2022-06-21 13:47:11
+ * @LastEditTime: 2022-06-21 14:10:16
  * @Author: isboyjc
  */
 import { isElementInViewport } from '@/utils/index';
 import { useCachesTabsStore } from '@/store/tabs';
-import { TransitionPresets } from '@vueuse/core';
 import { routerPush } from '@/hooks/useMicro';
-import { ref } from 'vue';
-
+import { ref, computed, watch, nextTick, onMounted, onBeforeUnmount, onBeforeUpdate } from 'vue';
+import { storeToRefs } from 'pinia';
 // ------- tabs右侧全屏操作 -------
 const contentRegionRefs = ref(null);
 const currentTab = ref({});
@@ -19,7 +18,7 @@ export function useTabs() {
   // ------- tabs项操作 -------
   const cachesTabsStore = useCachesTabsStore();
   const tabsBoxRefs = ref(null);
-  const { x, y, isScrolling } = useScroll(tabsBoxRefs);
+  // const { x, y, isScrolling } = useScroll(tabsBoxRefs);
   let tabsItemRefs = ref([]);
   const setTabsItemRef = (el) => (el ? tabsItemRefs.value.push(el) : null);
 
@@ -86,28 +85,10 @@ export function useTabs() {
     hiddenTabs.value = htArr;
     // console.log('hiddenTabsMenusRefresh!!!!!', hiddenTabs.value);
   };
-  // 隐藏tabs菜单项点击
-  const hiddenTabsMenusClick = (item) => {
-    const idx = cachesTabsStore.cachesTabs.findIndex((v) => v.id === item.id);
-    const curEl = tabsItemRefs.value[idx];
-    const curElRect = curEl.getBoundingClientRect();
-    const toX = ref(x.value);
-    const toXValue = useTransition(toX, {
-      duration: 500,
-      transition: TransitionPresets.easeOutExpo
-    });
 
-    // 计算滚动位置赋值
-    toX.value = curElRect.width * idx;
-    const unwatchFn = watch(toXValue, (data) => {
-      tabsBoxRefs.value.scrollTo(data, y);
-    });
-    setTimeout(() => unwatchFn(), 1000);
-    activeTabs(cachesTabsStore.cachesTabs[idx]);
-  };
   // 监听tabs以及tabs容器滚动
   watch(
-    [() => cachesTabsStore.cachesTabs, isScrolling],
+    [() => cachesTabsStore.cachesTabs],
     () => {
       nextTick(() => {
         hiddenTabsMenusRefresh();
@@ -230,8 +211,6 @@ export function useTabs() {
     rightMenusVisible.value = false;
     rightMenusCurrentTab.value = null;
   };
-  // 监听元素外部的点击
-  onClickOutside(rightMenusRefs, rightMenusClickOutsideFn);
   // 右键菜单选中某项点击
   const rightMenusItemClick = (rightMenusItem) => {
     let item = {};
@@ -293,7 +272,6 @@ export function useTabs() {
     // 隐藏菜单项操作
     hiddenTabs,
     isShowHiddenTabs,
-    hiddenTabsMenusClick,
     // tabs右侧全屏操作
     contentRegionRefs
   };
