@@ -2,7 +2,7 @@
  * @LastEditors: liu yang
  * @Description: 入口文件
  * @Date: 2021-09-28 14:51:48
- * @LastEditTime: 2022-06-21 14:03:44
+ * @LastEditTime: 2022-06-21 14:54:30
  * @Author:
  */
 console.log("🚀 > file: main.js > line 14 > config", config)
@@ -56,10 +56,10 @@ function handleMicroData(router) {
           console.log("当前路由：", curRouterPath);
           if (data.path && data.path !== curRouterPath) {
             console.log("路由跳转", data.path, window.parentGetSys());
-            if (window.parentGetSys().includes("qishi-wo")) {
+            if (window.parentGetSys().includes("qishi-cas")) {
               router.push(data.path);
             } else {
-              window.parentRouter.push(`/qishi-wo${data.path}`);
+              window.parentRouter.push(`/qishi-cas${data.path}`);
             }
           }
           break;

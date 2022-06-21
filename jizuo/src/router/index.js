@@ -2,8 +2,8 @@
  * @LastEditors: liu yang
  * @Description: ...
  * @Date: 2022-02-21 11:48:28
- * @LastEditTime: 2022-06-21 11:04:23
- * @Author: 
+ * @LastEditTime: 2022-06-21 14:45:41
+ * @Author:
  */
 import { createRouter, createWebHistory } from 'vue-router';
 import { getConfig } from '@/config/index';
@@ -32,7 +32,7 @@ export const routes = [
     path: '/qishi-bi/:page*', // vue-router@4.x path的写法为：'/my-page/:page*'
     name: 'QishiBi',
     component: () => import('@/views/QishiBi.vue')
-  },
+  }
 ];
 
 const router = createRouter({

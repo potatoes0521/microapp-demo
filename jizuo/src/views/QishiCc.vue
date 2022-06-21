@@ -23,7 +23,6 @@
   import useMicro, { unifiedEventhandle } from '@/hooks/useMicro';
   import { getConfig } from '@/config';
   import { log } from '@/utils/log';
-  import { useNotify } from '@/layout/hooks/useNotify';
   import { ref } from 'vue';
 
   const cc = getConfig('cc');
@@ -61,11 +60,6 @@
   const handleDataChange = (e) => {
     log('基座：CC 子项目派发事件');
     const { event, data } = e.detail.data;
-
-    if (event === 'notifyRefresh') {
-      const { noticeCountFn } = useNotify();
-      noticeCountFn();
-    }
 
     unifiedEventhandle(event, data);
   };
